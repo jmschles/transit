@@ -64,7 +64,8 @@ namespace :transit_data do
           parsed_xml_rsp.css("Stop").each do |stop|
             route.stops.create({
               name: stop.attributes["name"].value,
-              code: stop.attributes["StopCode"].value
+              code: stop.attributes["StopCode"].value,
+              direction: dir
             })
           end
         end
