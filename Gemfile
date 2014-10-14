@@ -33,6 +33,9 @@ group :development do
   gem 'byebug'
 end
 
+# JSON filtering
+gem 'rabl-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -41,7 +44,3 @@ end
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-

@@ -1,6 +1,4 @@
 class StopsController < ApplicationController
-  respond_to :json
-
   def index
     @agency     = Agency.find(params[:agency_id])
     @route      = @agency.routes.find(params[:route_id])
@@ -11,7 +9,6 @@ class StopsController < ApplicationController
     else
       @stops  = @route.stops
     end
-    render :json => @stops
   end
 
   def show
@@ -24,6 +21,5 @@ class StopsController < ApplicationController
     else
       @stop      = @route.stops.find(params[:id])
     end
-    render :json => @stop
   end
 end
