@@ -10,7 +10,7 @@ namespace :transit_data do
   task agencies: :environment do
     xml_rsp         = RestClient.get("#{BASE_511_URL}/GetAgencies.aspx?token=#{TOKEN}")
     parsed_xml_rsp  = Nokogiri.parse(xml_rsp)
-    agencies        = parsed_xml_rsp.first_element_child.first_element_child.element_children
+    agencies        = parsed_xml_rsp.css("Agency")
     agencies.each do |agency|
       agency_name   = agency.attributes["Name"].value
       unless Agency.find_by_name(agency_name).present?
@@ -30,8 +30,7 @@ namespace :transit_data do
       encoded_url     = URI.encode(raw_url)
       xml_rsp         = RestClient.get(encoded_url)
       parsed_xml_rsp  = Nokogiri.parse(xml_rsp)
-      # FIXME: there must be a better way...
-      routes          = parsed_xml_rsp.first_element_child.first_element_child.first_element_child.first_element_child.element_children
+      routes          = parsed_xml_rsp.css("Route")
       routes.each do |route|
         route_name = route.attributes["Name"].value
         new_route = agency.routes.create({
@@ -39,7 +38,7 @@ namespace :transit_data do
           code: route.attributes["Code"].value
         })
         if Route.find_by_name(route_name).agency.has_direction?
-          raw_directions = route.first_element_child.element_children
+          raw_directions = route.css("RouteDirection")
           raw_directions.each do |raw_direction|
             new_route.directions.create({
               name: raw_direction.attributes["Name"].value,
@@ -62,7 +61,7 @@ namespace :transit_data do
           encoded_url     = URI.encode(raw_url)
           xml_rsp         = RestClient.get(encoded_url)
           parsed_xml_rsp  = Nokogiri.parse(xml_rsp)
-          parsed_xml_rsp.xpath("//Stop").each do |stop|
+          parsed_xml_rsp.css("Stop").each do |stop|
             route.stops.create({
               name: stop.attributes["name"].value,
               code: stop.attributes["StopCode"].value
@@ -75,7 +74,7 @@ namespace :transit_data do
         encoded_url     = URI.encode(raw_url)
         xml_rsp         = RestClient.get(encoded_url)
         parsed_xml_rsp  = Nokogiri.parse(xml_rsp)
-        parsed_xml_rsp.xpath("//Stop").each do |stop|
+        parsed_xml_rsp.css("Stop").each do |stop|
           route.stops.create({
             name: stop.attributes["name"].value,
             code: stop.attributes["StopCode"].value
@@ -86,10 +85,9 @@ namespace :transit_data do
   end
 
   desc "Load all data, preparing the database for use"
-  task all: :environment do
+  task populate: :environment do
     Rake::Task["transit_data:agencies"].invoke
     Rake::Task["transit_data:routes"].invoke
     Rake::Task["transit_data:stops"].invoke
   end
-
 end
