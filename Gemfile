@@ -36,6 +36,8 @@ end
 # JSON filtering
 gem 'rabl-rails'
 
+gem 'rails-backbone', github: 'codebrew/backbone-rails', branch: 'master'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

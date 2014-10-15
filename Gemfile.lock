@@ -1,3 +1,14 @@
+GIT
+  remote: git://github.com/codebrew/backbone-rails.git
+  revision: 9bf992cc5e9fcb14174c437102040cdd6a562581
+  branch: master
+  specs:
+    rails-backbone (1.1.2)
+      coffee-script
+      ejs
+      jquery-rails
+      railties
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -42,6 +53,7 @@ GEM
     coffee-script-source (1.8.0)
     columnize (0.8.9)
     debugger-linecache (1.2.0)
+    ejs (1.1.1)
     erubis (2.7.0)
     execjs (2.2.1)
     hike (1.2.3)
@@ -133,6 +145,7 @@ DEPENDENCIES
   nokogiri
   rabl-rails
   rails (= 4.1.6)
+  rails-backbone!
   rest-client
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
