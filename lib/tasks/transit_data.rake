@@ -1,5 +1,5 @@
-TOKEN           = '4f76f96f-9ad4-4747-9ac0-e89035de7bce'
-BASE_511_URL    = 'http://services.my511.org/Transit2.0'
+TOKEN        = YAML.load_file('config/tokens.yml')["511_api_token"]
+BASE_511_URL = 'http://services.my511.org/Transit2.0'
 
 def to_boolean(str)
   str == "True"
