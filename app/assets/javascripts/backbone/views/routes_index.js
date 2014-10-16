@@ -23,7 +23,7 @@ Transit.Views.RoutesIndex = Backbone.View.extend({
     var route = this.routes.get(route_id);
     var route_directions = route.get('directions');
     if (route_directions.length === 0) {
-      // no-op for now
+      this.showStops(route);
     } else {
       this.showDirections(route);
     }
@@ -41,5 +41,9 @@ Transit.Views.RoutesIndex = Backbone.View.extend({
 
       $('#directions').html(directionsView.render().$el);
     });
+  },
+
+  showStops: function (route) {
+
   }
 });

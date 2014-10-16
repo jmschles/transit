@@ -3,7 +3,7 @@ Transit.Models.Agency = Backbone.RelationalModel.extend({
     type: Backbone.HasMany,
     key:  'routes',
     relatedModel: 'Route',
-    collectionType: 'Routes',
+    collectionType: Transit.Collections.Routes,
     reverseRelation: {
       key: 'agency',
     }

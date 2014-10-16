@@ -1,0 +1,6 @@
+<ul>
+  <% directions.each(function(direction) { %>
+    <% var directionId = direction.get('id'); %>
+    <li class="direction_name" direction_id="<%= directionId %>" id="direction_<%= directionId %>"><%= direction.get('name') %></li>
+  <% }); %>
+</ul>

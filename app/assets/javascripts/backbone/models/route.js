@@ -3,7 +3,7 @@ Transit.Models.Route = Backbone.RelationalModel.extend({
     type: Backbone.HasMany,
     key:  'directions',
     relatedModel: 'Direction',
-    collectionType: 'Directions',
+    collectionType: Transit.Collections.Directions,
     reverseRelation: {
       key: 'route',
     }

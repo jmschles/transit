@@ -20,6 +20,8 @@ window.Transit = {
       "$directionsEl": $("#directions"),
     });
 
+    Backbone.Relational.store.addModelScope(this.Models);
+
     Dispatcher = _.extend({}, Backbone.Events);
     // new FlashMessage();
 
