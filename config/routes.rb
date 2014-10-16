@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :stops, defaults: { format: :json }, only: %i(index show) do
         resources :departures, defaults: { format: :json }, only: :index
       end
-      resources :directions, only: [] do
+      resources :directions, only: %i(index show) do
         resources :stops, defaults: { format: :json }, only: %i(index show) do
           resources :departures, defaults: { format: :json }, only: :index
         end
