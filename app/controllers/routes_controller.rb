@@ -1,7 +1,7 @@
 class RoutesController < ApplicationController
   def index
     @agency = Agency.find(params[:agency_id])
-    @routes = @agency.routes
+    @routes = @agency.routes.includes(:directions)
   end
 
   def show
