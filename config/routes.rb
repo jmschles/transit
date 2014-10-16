@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: "root#root"
   resources :agencies, defaults: { format: :json }, only: %i(index show) do
     resources :routes, defaults: { format: :json }, only: %i(index show) do
       resources :stops, defaults: { format: :json }, only: %i(index show) do
