@@ -1,5 +1,6 @@
 <ul>
   <% routes.each(function(route) { %>
-    <li><%= route.get('name') %></li>
+    <% var routeId = route.get('id'); %>
+    <li class="route_name" route_id="<%= routeId %>" id="route_<%= routeId %>"><%= route.get('name') %></li>
   <% }); %>
 </ul>

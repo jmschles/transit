@@ -17,6 +17,7 @@ window.Transit = {
       "$rootEl": $("#content"),
       "$agenciesEl": $("#agencies"),
       "$routesEl": $("#routes"),
+      "$directionsEl": $("#directions"),
     });
 
     Dispatcher = _.extend({}, Backbone.Events);
