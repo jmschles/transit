@@ -37,6 +37,7 @@ end
 gem 'rabl-rails'
 
 gem 'rails-backbone', github: 'codebrew/backbone-rails', branch: 'master'
+gem 'backbone-relational-rails'
 gem 'ejs'
 
 # Use ActiveModel has_secure_password
