@@ -1,2 +1,2 @@
 collection :@stops
-attributes :name, :code, :route_id, :direction_id
+attributes :id, :name, :code, :route_id, :direction_id
