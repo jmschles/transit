@@ -15,6 +15,8 @@ window.Transit = {
     // intialize router
     new Transit.Routers.Transit({
       "$rootEl": $("#content"),
+      "$agenciesEl": $("#agencies"),
+      "$routesEl": $("#routes"),
     });
 
     Dispatcher = _.extend({}, Backbone.Events);

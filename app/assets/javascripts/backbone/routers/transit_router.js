@@ -1,13 +1,15 @@
 Transit.Routers.Transit = Backbone.Router.extend({
   routes: {
-    "": "index",
+    "": "showAgencyList",
   },
 
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
+    this.$agenciesEl = options.$agenciesEl;
+    this.$routesEl = options.$routesEl;
   },
 
-  index: function() {
+  showAgencyList: function() {
     var that = this;
 
     Transit.agenciesColl = new Transit.Collections.Agencies();
@@ -17,8 +19,7 @@ Transit.Routers.Transit = Backbone.Router.extend({
         agencies: Transit.agenciesColl,
       });
 
-      that.$rootEl.html(agenciesView.render().$el)
+      that.$agenciesEl.html(agenciesView.render().$el)
     });
-  }
-
+  },
 });

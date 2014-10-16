@@ -1,5 +1,5 @@
 <ul>
   <% agencies.each(function(agency) { %>
-    <li><%= agency.get('name') %></li>
+    <li class="agency_name" id="<%= agency.get('id') %>"><%= agency.get('name') %></li>
   <% }); %>
 </ul>
