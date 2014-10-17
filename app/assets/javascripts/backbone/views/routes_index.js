@@ -43,6 +43,7 @@ Transit.Views.RoutesIndex = Backbone.View.extend({
         routeId: routeId,
       });
 
+      $('#directions').parent().show();
       $('#stops').html('');
       $('#directions').html(directionsView.render().$el);
     });
@@ -61,6 +62,7 @@ Transit.Views.RoutesIndex = Backbone.View.extend({
         routeId: routeId,
       });
 
+      $('#directions').parent().hide();
       $('#stops').html(stopsView.render().$el);
     });
   }
