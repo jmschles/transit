@@ -11,7 +11,8 @@ class DeparturesController < ApplicationController
 
     departures_list  = DepartureTimeList.new
     raw_xml_rsp      = departures_list.request_departure_times(agency, stop)
-    @next_departures = departures_list.parse_departure_times(raw_xml_rsp, route, direction, stop)
+    raw_departures   = departures_list.parse_departure_times(raw_xml_rsp, route, direction, stop)
+    @next_departures = DepartureTimeList.build_departures_json(raw_departures)
 
     render json: @next_departures
   end

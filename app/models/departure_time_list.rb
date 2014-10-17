@@ -20,4 +20,8 @@ class DepartureTimeList
 
     stop_xml.search('DepartureTime').map(&:inner_html)
   end
+
+  def self.build_departures_json(departures_list)
+    departures_list.map { |d| { departure: d } }
+  end
 end
