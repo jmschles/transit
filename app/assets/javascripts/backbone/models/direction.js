@@ -8,4 +8,4 @@ Transit.Models.Direction = Backbone.RelationalModel.extend({
       key: 'direction',
     }
   }]
-})
+});
