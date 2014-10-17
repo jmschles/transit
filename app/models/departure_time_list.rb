@@ -3,7 +3,9 @@ class DepartureTimeList
   BASE_511_URL = 'http://services.my511.org/Transit2.0'
 
   def request_departure_times(agency, stop)
-    raw_req_url     = "#{BASE_511_URL}/GetNextDeparturesByStopName.aspx?token=#{TOKEN}&agencyName=#{agency.name}&stopName=#{stop.name}"
+    agency_name = replace_amps(agency.name)
+    stop_name   = replace_amps(stop.name)
+    raw_req_url     = "#{BASE_511_URL}/GetNextDeparturesByStopName.aspx?token=#{TOKEN}&agencyName=#{agency_name}&stopName=#{stop_name}"
     encoded_req_url = URI.encode(raw_req_url)
     RestClient.get(encoded_req_url)
   end
@@ -19,6 +21,10 @@ class DepartureTimeList
     end
 
     stop_xml.search('DepartureTime').map(&:inner_html)
+  end
+
+  def replace_amps(str)
+    str.gsub('&', '%26')
   end
 
   def self.build_departures_json(departures_list)
