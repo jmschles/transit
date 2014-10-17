@@ -30,6 +30,8 @@ Transit.Views.AgenciesIndex = Backbone.View.extend({
         agencyId: agencyId,
       });
 
+      $('#directions').html('');
+      $('#stops').html('');
       $('#routes').html(routesView.render().$el);
     });
   }
