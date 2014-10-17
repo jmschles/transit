@@ -1,4 +1,5 @@
 <ul>
+  <h4>Stops</h4>
   <% stops.each(function(stop) { %>
     <% var stopId = stop.get('id'); %>
     <li class="stop_name" agency_id="<%= agencyId %>" route_id="<%= routeId %>" direction_id="<%= directionId %>" stop_id="<%= stopId %>" id="stop_<%= stopId %>"><%= stop.get('name') %></li>

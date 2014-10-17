@@ -1,4 +1,5 @@
 <ul>
+  <h4>Routes</h4>
   <% routes.each(function(route) { %>
     <% var routeId = route.get('id'); %>
     <li class="route_name" agency_id="<%= agencyId %>" route_id="<%= routeId %>" id="route_<%= routeId %>"><%= route.get('name') %></li>

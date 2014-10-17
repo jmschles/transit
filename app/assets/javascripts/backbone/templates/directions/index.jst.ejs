@@ -1,4 +1,5 @@
 <ul>
+  <h4>Directions</h4>
   <% directions.each(function(direction) { %>
     <% var directionId = direction.get('id'); %>
     <li class="direction_name" agency_id="<%= agencyId %>" route_id="<%= routeId %>" direction_id="<%= directionId %>" id="direction_<%= directionId %>"><%= direction.get('name') %></li>
