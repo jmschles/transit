@@ -1,1 +1,8 @@
-<h4><%= departures.pluck('departure').join(', ') %></h4>
+<h2>
+  <% var departures_array = departures.pluck('departure') %>
+  <% if (departures_array.length === 0) { %>
+    <%= "No upcoming departures :(" %>
+  <% } else { %>
+    <%= departures_array.join(', ') %>
+  <% } %>
+</h2>
