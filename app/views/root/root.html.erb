@@ -1,10 +1,36 @@
 <script type="text/application">
 </script>
 
-<div id="content">
-  <div id="agencies"></div>
-  <div id="routes"></div>
-  <div id="directions"></div>
-  <div id="stops"></div>
-  <div id="departures"></div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="nav navbar-left">
+      <%= image_tag('train_logo.jpg', size: '50x50') %>
+    </div>
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Transit-415</a>
+    </div>
+  </div>
+</div>
+<div class="jumbotron">
+  <div class="container">
+    <div id="departures">
+      <h2 style="color:#AAA">Click on the lists below...</h2>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div id="agencies"></div>
+    </div>
+    <div class="col-md-3">
+      <div id="routes"></div>
+    </div>
+    <div class="col-md-3">
+      <div id="directions"></div>
+    </div>
+    <div class="col-md-3">
+      <div id="stops"></div>
+    </div>
+  </div>
 </div>
