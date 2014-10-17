@@ -7,11 +7,13 @@ Transit.Views.RoutesIndex = Backbone.View.extend({
 
   initialize: function (options) {
     this.routes = options.routes;
+    this.agencyId = options.agencyId;
   },
 
   render: function () {
     var renderedContent = this.template({
       routes: this.routes,
+      agencyId: this.agencyIdd,
     });
 
     this.$el.html(renderedContent);
@@ -19,8 +21,8 @@ Transit.Views.RoutesIndex = Backbone.View.extend({
   },
 
   showDirectionsOrStops: function (event) {
-    var route_id = event.target.getAttribute('route_id');
-    var route = this.routes.get(route_id);
+    var routeId = event.target.getAttribute('route_id');
+    var route = this.routes.get(routeId);
     var route_directions = route.get('directions');
     if (route_directions.length === 0) {
       this.showStops(route);
@@ -30,13 +32,15 @@ Transit.Views.RoutesIndex = Backbone.View.extend({
   },
 
   showDirections: function (route) {
-    var agency_id = route.get('agency_id');
-    var route_id = route.get('id');
-    Transit.directionsColl = new Transit.Collections.Directions(agency_id, route_id);
+    var agencyId = route.get('agency_id');
+    var routeId = route.get('id');
+    Transit.directionsColl = new Transit.Collections.Directions(agencyId, routeId);
 
     $.when(Transit.directionsColl.fetch()).done(function () {
       var directionsView = new Transit.Views.DirectionsIndex({
         directions: Transit.directionsColl,
+        agencyId: agencyId,
+        routeId: routeId,
       });
 
       $('#directions').html(directionsView.render().$el);
@@ -44,6 +48,19 @@ Transit.Views.RoutesIndex = Backbone.View.extend({
   },
 
   showStops: function (route) {
+    var agencyId = route.get('agency_id');
+    var routeId = route.get('id');
 
+    Transit.stopsColl = new Transit.Collections.Stops(agencyId, routeId);
+
+    $.when(Transit.stopsColl.fetch()).done(function () {
+      var stopsView = new Transit.Views.StopsIndex({
+        stops: Transit.stopsColl,
+        agencyId: agencyId,
+        routeId: routeId,
+      });
+
+      $('#stops').html(stopsView.render().$el);
+    });
   }
 });

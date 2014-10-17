@@ -18,6 +18,7 @@ window.Transit = {
       "$agenciesEl": $("#agencies"),
       "$routesEl": $("#routes"),
       "$directionsEl": $("#directions"),
+      "$stopsEl": $("#stops"),
     });
 
     Backbone.Relational.store.addModelScope(this.Models);

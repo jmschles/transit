@@ -8,6 +8,7 @@ Transit.Routers.Transit = Backbone.Router.extend({
     this.$agenciesEl = options.$agenciesEl;
     this.$routesEl = options.$routesEl;
     this.$directionsEl = options.$directionsEl;
+    this.$stopsEl = options.$directionsEl;
   },
 
   showAgencyList: function() {

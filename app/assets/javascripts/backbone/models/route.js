@@ -7,5 +7,14 @@ Transit.Models.Route = Backbone.RelationalModel.extend({
     reverseRelation: {
       key: 'route',
     }
+  },
+  {
+    type: Backbone.HasMany,
+    key:  'stops',
+    relatedModel: 'Stop',
+    collectionType: Transit.Collections.Stops,
+    reverseRelation: {
+      key: 'directionless_route',
+    }
   }]
 });

@@ -1,7 +1,7 @@
 Transit.Collections.Directions = Backbone.Collection.extend({
-  initialize: function(agency_id, route_id) {
-    this.route_id = route_id;
-    this.url = "/agencies/" + agency_id + "/routes/" + route_id + "/directions";
+  initialize: function(agencyId, routeId) {
+    this.routeId = routeId;
+    this.url = "/agencies/" + agencyId + "/routes/" + routeId + "/directions";
   },
   model: Transit.Models.Direction,
 });

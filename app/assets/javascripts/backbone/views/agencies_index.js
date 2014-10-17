@@ -20,13 +20,14 @@ Transit.Views.AgenciesIndex = Backbone.View.extend({
 
   showRoutes: function (event) {
     var that = this;
-    var agency_id = event.target.id;
+    var agencyId = event.target.id;
 
-    Transit.routesColl = new Transit.Collections.Routes(agency_id);
+    Transit.routesColl = new Transit.Collections.Routes(agencyId);
 
     $.when(Transit.routesColl.fetch()).done(function () {
       var routesView = new Transit.Views.RoutesIndex({
         routes: Transit.routesColl,
+        agencyId: agencyId,
       });
 
       $('#routes').html(routesView.render().$el);

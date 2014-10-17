@@ -1,0 +1,6 @@
+<ul>
+  <% stops.each(function(stop) { %>
+    <% var stopId = stop.get('id'); %>
+    <li class="stop_name" stop_id="<%= stopId %>" id="stop_<%= stopId %>"><%= stop.get('name') %></li>
+  <% }); %>
+</ul>
